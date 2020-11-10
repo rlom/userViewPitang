@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<ui:composition template="/template_header_footer.xhtml">
+	<ui:define name="importCSS">
+	</ui:define>
+
+	<ui:define name="importJS">
+	</ui:define>
+
+	<ui:define name="titulo">Usuários</ui:define>
+
+	<ui:define name="styles">
+		<style>
+.col-xs-11.col-sm-4.alert {
+	z-index: 10000 !important;
+}
+
+.colorBlue, #modalCadastro_header {
+	background: #2E64FE !important;
+	color: white;
+	border-color: #2E64FE !important;
+}
+
+#modalExcluir_header {
+	background: #FF0000 !important;
+	color: white !important;
+	border-color: #FF0000 !important;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="tituloPagina">Usuários do UserView</ui:define>
+
+	<ui:define name="modals">
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<p:ajaxStatus onstart="PF('statusDialog').show()"
+			onsuccess="PF('statusDialog').hide();" />
+
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage name="imagens/loading.gif" />
+		</p:dialog>
+
+		<b:container id="container">
+			<b:row>
+				<b:panel styleClass="colorBlue">
+					<div style="height: 40px;">
+						<b:column span="6"></b:column>
+						<b:column span="6">
+						</b:column>
+					</div>
+				</b:panel>
+			</b:row>
+
+			<b:row>
+				<b:panel>
+					<p:dataTable widgetVar="tbl" id="tbl"
+						style="margin-bottom:20px;margin-top:5px;"
+						value="#{homeController.usuarios}" var="user"
+						emptyMessage="Nenhum registro encontrado"
+						paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+						<p:column headerText="Nome">
+							<h:outputText value="#{user.nome}" />
+						</p:column>
+
+						<p:column headerText="Email">
+							<h:outputText value="#{user.email}" />
+						</p:column>
+						
+						<p:column headerText="Email">
+							<h:outputText value="#{user.senha}" />
+						</p:column>
+
+						<p:column exportable="false" headerText="Ações">
+							<center>
+							</center>
+						</p:column>
+					</p:dataTable>
+				</b:panel>
+			</b:row>
+		</b:container>
+	</ui:define>
+
+	<ui:define name="js">
+		<script>
+			
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+	<h:outputScript library="js" name="template.js" />
+	<h:outputScript library="js" name="jquery/jquery.mask.js" />
+
+	<ui:insert name="importCSS"></ui:insert>
+	<ui:insert name="importJS"></ui:insert>
+
+	<title><ui:insert name="titulo"></ui:insert></title>
+
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['imagens/user.ico']}" />
+
+	<b:navBar id="menuTop" fluid="true" fixed="top" class="nav"
+		style-class="o" sticky="true">
+
+		<b:row id="lineBlue"></b:row>
+
+		<b:column colMd="1" colSm="1" styleClass="col-sem-padding">
+			<b:image id="imgUser" style="" height="37" width="40"
+				value="#{resource['imagens/profile-user.png']}"></b:image>
+		</b:column>
+
+		<b:column colMd="9" colSm="9" styleClass="col-sem-padding">
+			<div id="tituloPagina" style="color: #777; text-align: center;">
+				<h4>
+					<ui:insert name="tituloPagina"></ui:insert>
+				</h4>
+			</div>
+		</b:column>
+	</b:navBar>
+
+	<ui:insert name="styles"></ui:insert>
+</h:head>
+
+<h:body style="background-color:#dcdcdc; padding-top: 50px;">
+
+	<div id="identificacaoUsuario">
+		<b:iconAwesome name="user"
+			style="float: left; color:#f2f2f2; font-size: 20px; margin-left:20px; margin-top: 3px;"></b:iconAwesome>
+
+		<h5
+			style="color: #f2f2f2; margin-left: 8px; float: left; margin-top: 7px;">
+			<b>#{loginController.usuarioLogado.nome.length() > 30 ?
+				loginController.usuarioLogado.nome.substring(0, 29).concat('...') :
+				loginController.usuarioLogado.nome}</b>
+		</h5>
+
+		<b:iconAwesome name="sign-out" onclick="saircomm();" tooltip="Sair"
+			tooltip-position="right"
+			style="float: right; color:#f2f2f2; font-size: 20px;cursor: pointer;margin-top: 5px;margin-right:15px;"></b:iconAwesome>
+
+	</div>
+
+	<h:form>
+		<p:remoteCommand name="saircomm"
+			actionListener="#{loginController.logout()}" style="display: none;" />
+	</h:form>
+
+	<a href="#{request.contextPath}/sistema/home.jsf">
+		<div id="homeButton">
+			<b:iconAwesome name="home" tooltip="Home" tooltip-position="top"
+				style="color:#f2f2f2; font-size: 40px;margin-left:7px !important;;margin-top: 5px !important;;margin-right:0px;" />
+		</div>
+	</a>
+
+	<div style="margin-top: 5px;" />
+	<ui:insert name="modals"></ui:insert>
+
+	<h:form id="itens" prependId="false">
+		<b:growl id="growl" allowDismiss="true" escape="true" />
+		<ui:insert name="conteudo"></ui:insert>
+		<div id="footerMargin" style="margin-top: 60px;"></div>
+
+		<div id="footer"
+			style="background-color: rgba(46, 100, 254, 1); z-index: 5000;">
+			<a href="https://www.pitang.com/trabalhe-conosco" target="_blank">
+				<h6 style="margin-left: 10px; float: left; color: white;">&#169;
+					2020 UserView - Cadastro e Manutenção de Usuários</h6>
+			</a>
+		</div>
+	</h:form>
+</h:body>
+
+<ui:insert name="js"></ui:insert>
+</html>

@@ -1,0 +1,227 @@
+html::-webkit-scrollbar {
+	width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+}
+
+html::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+html::-webkit-scrollbar-thumb:vertical:hover {
+	background: #777;
+}
+
+.menuEstiloImagem {
+	height: 50px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.t {
+	width: 30%;
+}
+
+.ui-growl {
+	opacity: 1;
+	z-index: 5000 !important;
+}
+
+div[data-notify-position] {
+	z-index: 99997 !important;
+}
+
+.ui-widget-overlay.ui-dialog-mask {
+	z-index: 99998 !important;
+}
+
+.ui-dialog.ui-widget.ui-widget-content {
+	z-index: 99999 !important;
+}
+
+.block {
+	position: relative;
+}
+
+#lineBlue {
+	background-color: #2E64FE;
+	height: 4px !important;
+	margin-bottom: 3px;
+}
+
+#menuTop {
+	background-color: whitesmoke;
+	border-color: #A4A4A4;
+	font-weight: bold;
+}
+
+#identificacaoUsuario {
+	border-radius: 0 0 30px 30px;
+	box-shadow: 4px 4px 5px #888888 !important;
+	margin: 0 auto;
+	margin-top: -5px;
+	background-color: #2E64FE;
+	height: 40px;
+	width: 23%;
+	padding-top: 10px;
+	color: white;
+	display: block;
+}
+
+#expandirNav {
+	margin-top: 65px;
+}
+
+.botaoSair {
+	cursor: pointer;
+}
+
+.panel {
+	box-shadow: 4px 4px 5px #888888 !important;
+}
+
+.ui-icon-triangle-1-s {
+	margin-left: -4px !important;
+	margin-top: 6px !important;
+}
+
+.ui-selectcheckboxmenu .ui-selectcheckboxmenu-label {
+	padding: 7px 120px 3px 5px !important;
+	z-index: 3000 !important;
+}
+
+.dataTables_filter {
+	display: none !important;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list {
+	width: 253px;
+}
+
+.tituloSessao {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.separatorSessao {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.col-sem-padding {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.no-bottom-padding .panel-body {
+	padding-bottom: 0px !important;
+}
+
+.no-left-padding {
+	padding-left: 0px !important;
+}
+
+.no-right-padding {
+	padding-right: 0px !important;
+}
+
+.mac {
+	text-transform: uppercase;
+}
+
+.panel-padding-sides .panel-body {
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.hr-margin-bottom {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.ui-slider-handle.ui-state-default.ui-corner-all {
+	top: -.3em !important;
+	border-radius: 10px;
+}
+
+.modal-info-ocr-color {
+	background-color: white !important;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.panel-title-small {
+	font-size: 14px;
+}
+
+.panel-header-small .panel-heading {
+	padding: 5px 15px;
+}
+
+.panel-danger-custom {
+	border-color: #d43f3a !important;
+}
+
+.panel-danger-custom .panel-heading {
+	color: #fff !important;
+	background-color: #d9534f !important;
+	border-color: #d43f3a !important;
+}
+
+.panel-warning-custom {
+	border-color: #eea236 !important;
+}
+
+.panel-warning-custom .panel-heading {
+	color: #fff !important;
+	background-color: #f0ad4e !important;
+	border-color: #eea236 !important;
+}
+
+.vertical-align {
+	display: flex;
+	align-items: center;
+}
+
+#detailContent {
+	position: fixed;
+	bottom: 94%;
+	right: 0.5% !important;
+	width: 19% !important;
+	height: 5% !important;
+	z-index: 5000 !important;
+	background-color: rgba(128, 128, 136, 0.9) !important;
+	color: white !important;
+}
+
+#iconArrow:HOVER {
+	cursor: pointer !important;
+}
+
+#homeButton {
+	border-radius: 25px 25px 25px 25px !important;
+	box-shadow: 4px 4px 5px #888888 !important;
+	position: fixed !important;
+	margin-top: 30px !important;
+	background-color: #2E64FE !important;
+	height: 50px !important;
+	width: 50px !important;
+	display: table !important;
+	margin-left: 15px !important;
+}

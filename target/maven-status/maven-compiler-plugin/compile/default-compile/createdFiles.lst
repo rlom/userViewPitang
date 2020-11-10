@@ -1,0 +1,12 @@
+br\com\pitang\userview\classesBasicas\Usuario.class
+br\com\pitang\userview\classesBasicas\Telefone.class
+br\com\pitang\userview\controller\LoginController.class
+br\com\pitang\userview\repositorios\UsuarioDao.class
+br\com\pitang\userview\exceptions\UserViewException.class
+br\com\pitang\userview\util\LoginFilter.class
+br\com\pitang\userview\util\MensagemUsuario.class
+br\com\pitang\userview\util\SessionUSV.class
+br\com\pitang\userview\repositorios\DaoBasico.class
+br\com\pitang\userview\repositorios\Treated.class
+br\com\pitang\userview\Teste.class
+br\com\pitang\userview\controller\HomeController.class

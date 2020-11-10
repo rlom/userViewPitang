@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<ui:composition template="/template_header_footer.xhtml">
+	<ui:define name="importCSS">
+	</ui:define>
+
+	<ui:define name="importJS">
+	</ui:define>
+
+	<ui:define name="titulo">Usuários</ui:define>
+
+	<ui:define name="styles">
+		<style>
+.col-xs-11.col-sm-4.alert {
+	z-index: 10000 !important;
+}
+
+.colorBlue, #modalCadastro_header {
+	background: #2E64FE !important;
+	color: white;
+	border-color: #2E64FE !important;
+}
+
+#modalExcluir_header {
+	background: #FF0000 !important;
+	color: white !important;
+	border-color: #FF0000 !important;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="tituloPagina">Usuários do UserView</ui:define>
+
+	<ui:define name="modals">
+		<b:modal id="modalCadastro" closeOnEscape="false" backdrop="false"
+			title="Cadastro de Usuário" styleClass="modalPseudoClass">
+			<h:form id="form" prependId="false">
+				<b:panel title=" " collapsible="false" look="primary">
+					<b:row>
+						<b:inputText span="12" id="nome" placeholder="Nome" tooltip="Nome"
+							label="Nome:" tooltipPosition="top"
+							value="#{homeController.usuario.nome}">
+						</b:inputText>
+					</b:row>
+
+					<b:row>
+						<b:inputText span="6" id="descricao" placeholder="Email"
+							tooltip="Email" label="Email:" tooltipPosition="top"
+							value="#{homeController.usuario.email}">
+						</b:inputText>
+
+						<b:inputText span="6" id="senha" placeholder="Senha"
+							tooltip="Senha" label="Senha" tooltipPosition="top"
+							value="#{homeController.usuario.senha}">
+						</b:inputText>
+					</b:row>
+
+					<b:row styleClass="colorBlue"
+						style="border-radius: 10px; padding: 10px;">
+						<b:inputText span="2" placeholder="DDD" label="DDD"
+							value="#{homeController.telefone.ddd}" tooltip="DDD"
+							tooltipPosition="top" maxlength="3">
+						</b:inputText>
+
+						<b:inputText span="3" placeholder="Número" label="Número"
+							value="#{homeController.telefone.numero}" tooltip="Número"
+							tooltipPosition="top" mask="9{1,11}">
+						</b:inputText>
+
+						<b:inputText span="4" placeholder="Tipo" label="Tipo"
+							value="#{homeController.telefone.tipo}" tooltip="Tipo"
+							tooltipPosition="top" maxlength="20">
+						</b:inputText>
+
+						<b:commandButton span="3" value="Adicionar"
+							style="margin-top: 10px;" icon="glyphicon glyphicon-plus"
+							action="#{homeController.adicionar()}" look="success"
+							update="@form" />
+					</b:row>
+
+					<b:row>
+						<p:dataTable widgetVar="tbl2" id="tbl2"
+							style="margin-bottom:20px;margin-top:5px;"
+							value="#{homeController.telefones}" var="tel"
+							emptyMessage="Nenhum registro encontrado"
+							paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+							<p:column headerText="DDD">
+								<center>
+									<h:outputText value="#{tel.ddd}" />
+								</center>
+							</p:column>
+
+							<p:column headerText="Número">
+								<center>
+									<h:outputText value="#{tel.numero}" />
+								</center>
+							</p:column>
+
+							<p:column headerText="Tipo">
+								<center>
+									<h:outputText value="#{tel.tipo}" />
+								</center>
+							</p:column>
+
+							<p:column exportable="false" headerText="Ações">
+								<center>
+									<b:commandButton value="Remover"
+										icon="glyphicon glyphicon-plus"
+										action="#{homeController.remover(tel)}" look="danger"
+										update="@form" />
+								</center>
+							</p:column>
+						</p:dataTable>
+					</b:row>
+
+					<b:row style="margin-top: -10px">
+						<p:separator style="width: 95%;" />
+					</b:row>
+
+					<b:row>
+						<b:commandButton value="Salvar" update="@form :form,itens"
+							oncomplete="return false;" icon="glyphicon glyphicon-ok"
+							action="#{homeController.salvar()}" look="success"
+							style="float: right; margin-right:20px; margin-top:-10px" />
+					</b:row>
+
+					<div style="margin-bottom: 5px;"></div>
+				</b:panel>
+			</h:form>
+		</b:modal>
+
+		<b:modal id="modalExcluir" title="Deseja mesmo excluir?"
+			styleClass="modalPseudoClass">
+			<p>
+				<strong>Uma exclusão não pode ser desfeita.</strong>
+			</p>
+
+			<f:facet name="footer">
+				<h:form id="formExcluir">
+
+					<b:button value="Cancelar" dismiss="modal" onclick="return false;"
+						icon="glyphicon glyphicon-remove" />
+					<b:commandButton value="Excluir" look="danger"
+						icon="glyphicon glyphicon-trash"
+						action="#{homeController.excluir()}"
+						oncomplete="$('#modalExcluir').modal('hide');return false;"
+						update="@form" />
+				</h:form>
+			</f:facet>
+		</b:modal>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<p:ajaxStatus onstart="PF('statusDialog').show()"
+			onsuccess="PF('statusDialog').hide();" />
+
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage name="imagens/loading.gif" />
+		</p:dialog>
+
+		<b:container id="container">
+			<b:row>
+				<b:panel styleClass="colorBlue">
+					<b:row>
+						<b:column span="9"></b:column>
+
+						<b:commandButton span="3" value="Novo Usuário" update='form'
+							oncomplete="$('#modalCadastro').modal();return false;"
+							action="#{homeController.novoUsuario()}"
+							icon="glyphicon glyphFicon-plus" look="success" />
+					</b:row>
+				</b:panel>
+			</b:row>
+
+			<b:row>
+				<b:panel>
+					<p:dataTable widgetVar="tbl" id="tbl"
+						style="margin-bottom:20px;margin-top:5px;"
+						value="#{homeController.usuarios}" var="user"
+						emptyMessage="Nenhum registro encontrado"
+						paginatorTemplate="  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+
+						<p:column headerText="Nome">
+							<h:outputText value="#{user.nome}" />
+						</p:column>
+
+						<p:column headerText="Email">
+							<h:outputText value="#{user.email}" />
+						</p:column>
+
+						<p:column headerText="Email">
+							<h:outputText value="#{user.senha}" />
+						</p:column>
+
+						<p:column exportable="false" headerText="Ações">
+							<center>
+								<b:commandButton tooltip="Editar" update='form'
+									action="#{homeController.editarUsuario()}"
+									oncomplete="$('#modalCadastro').modal();return false;"
+									icon="glyphicon glyphicon-pencil" look="warning" size="xs"
+									style="margin-left: 10px;">
+									<f:setPropertyActionListener target="#{homeController.usuario}"
+										value="#{user}" />
+								</b:commandButton>
+								
+								<b:commandButton tooltip="Excluir" update='form'
+									oncomplete="$('#modalExcluir').modal();return false;"
+									icon="glyphicon glyphicon-trash" look="danger" size="xs"
+									style="margin-left: 10px;">
+									<f:setPropertyActionListener target="#{homeController.usuario}"
+										value="#{user}" />
+								</b:commandButton>
+							</center>
+						</p:column>
+					</p:dataTable>
+				</b:panel>
+			</b:row>
+		</b:container>
+	</ui:define>
+
+	<ui:define name="js">
+		<script>
+			
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>

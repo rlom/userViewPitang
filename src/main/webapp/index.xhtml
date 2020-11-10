@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<title>Bem-Vindo | UserView</title>
+	<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+
+	<h:outputScript library="js" name="jquery/jquery.maximage.js" />
+	<h:outputScript library="js" name="jquery/jquery.cycle.all.js" />
+	
+	<h:outputStylesheet library="css" name="jquery/jquery.maximage.css" />
+
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['imagens/user.ico']}" />
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("[id*='btnEntrar']").click(function() {
+				$("[id*='btnEntrar']").css('display', 'none');
+				$("[id*='btnEntrar2']").css('display', 'initial');
+
+			});
+		});
+	</script>
+
+	<style>
+html {
+	background: url("#{resource['imagens/together.jpg']}") no-repeat
+		center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.panelLogin {
+	height: 400px;
+	width: 400px;
+	position: absolute;
+	top: 20vh;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border-color: white;
+	background: rgba(245, 245, 245, 0.8);
+}
+
+#body {
+	width: 0px;
+}
+</style>
+
+</h:head>
+
+<h:body id="body">
+	<b:panel style="display:none;"></b:panel>
+
+	<b:container id="container">
+		<b:row>
+			<b:panel styleClass="panelLogin">
+				<div style="margin-left: 18%; margin-top: 40px;">
+					<img src="#{resource['imagens/user.ico']}" alt="" width="40"
+						height="40" style="margin-top: -28px;" />
+					<h2 style="display: inline;">UserView</h2>
+					<h3 style="display: block; margin-left: 30%;">Login</h3>
+				</div>
+				<div style="margin-top: 50px;"></div>
+				<h:form>
+					<p:growl id="growl" sticky="false" autoUpdate="true" />
+					<b:inputText id="iduser" value="#{loginController.usuario.email}"
+						placeholder="Usuário">
+						<f:facet name="prepend">
+							<b:icon name="glyphicon glyphicon-user"></b:icon>
+						</f:facet>
+					</b:inputText>
+
+					<b:inputText id="idsenha" value="#{loginController.usuario.senha}"
+						type="password" placeholder="Senha">
+						<f:facet name="prepend">
+							<b:iconAwesome name="key"></b:iconAwesome>
+						</f:facet>
+					</b:inputText>
+
+					<div style="margin-top: 40px;"></div>
+
+					<b:commandButton id="btnEntrar" value="Entrar"
+						action="#{loginController.logar()}" style="margin-left:40%;"
+						look="success">
+					</b:commandButton>
+
+					<b:commandButton id="btnEntrar2" value="Entrando..."
+						disabled="true" style="margin-left:36%;display:none;"
+						look="success">
+					</b:commandButton>
+				</h:form>
+			</b:panel>
+
+			<div id="footer"
+				style="background-color: rgba(46, 100, 254, 0.9); z-index: 5000;">
+				<a href="https://www.pitang.com/trabalhe-conosco" target="_blank">
+					<h6 style="margin-left: 10px; float: left; color: white;">&#169;
+						UserView - Cadastro e Manutenção de Usuários</h6>
+					<h6 style="margin-right: 10px; float: right; color: white;">
+						2020</h6>
+				</a>
+			</div>
+		</b:row>
+	</b:container>
+</h:body>
+</html>
