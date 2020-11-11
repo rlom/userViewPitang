@@ -4,17 +4,14 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="hibernate.connection.url">jdbc:hsqldb:file:C:\Users\Pegasus\Documents\Pitang\UserViewDBV1\;hsqldb.lock_file=false</property>
-		
-		<property name="hibernate.connection.username">admin</property>
-		<property name="hibernate.connection.password">admin</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">mysql://bf21e4acf65c3a:4690a77a@us-cdbr-east-02.cleardb.com/heroku_cca0904f4a46104?reconnect=true</property>
 		
 		<!-- JDBC connection pool (Usando built-in) -->
         <property name="connection.pool_size">1</property>
 		
 		<!-- SQL dialect -->
-		<property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		
 		<!-- Habilita o Gerenciamento de contexto automático da sessão do Hibernate -->
         <property name="current_session_context_class">thread</property>
@@ -28,7 +25,7 @@
 		<property name="hibernate.format_sql">false</property>
 		
 		<!-- Excluir e re-cria o esquema da base de dados na inicialização -->
-		<property name="hbm2ddl.auto">validate</property>
+		<property name="hbm2ddl.auto">update</property>
 
 		<!-- Livro -->
 		<mapping class="br.com.pitang.userview.classesBasicas.Usuario" />
