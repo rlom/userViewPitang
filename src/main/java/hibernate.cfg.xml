@@ -5,7 +5,10 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">mysql://bf21e4acf65c3a:4690a77a@us-cdbr-east-02.cleardb.com/heroku_cca0904f4a46104?reconnect=true</property>
+		<property name="hibernate.connection.url">jdbc:mysql://us-cdbr-east-02.cleardb.com/heroku_cca0904f4a46104?reconnect=true</property>
+		
+		<property name="hibernate.connection.username">bf21e4acf65c3a</property>
+		<property name="hibernate.connection.password">4690a77a</property>
 		
 		<!-- JDBC connection pool (Usando built-in) -->
         <property name="connection.pool_size">1</property>
@@ -25,7 +28,7 @@
 		<property name="hibernate.format_sql">false</property>
 		
 		<!-- Excluir e re-cria o esquema da base de dados na inicialização -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">validate</property>
 
 		<!-- Livro -->
 		<mapping class="br.com.pitang.userview.classesBasicas.Usuario" />
